@@ -3,16 +3,13 @@ import 'package:minimal_social_app/widgets/my_button.dart';
 import 'package:minimal_social_app/widgets/my_textfield.dart';
 
 class LoginPage extends StatelessWidget {
-  LoginPage({super.key});
+  LoginPage({super.key, required this.onTap});
 
   final emailController = TextEditingController();
   final passwordController = TextEditingController();
+  final void Function()? onTap;
 
   void login() {
-    // todo: connect to Firebase & implement this function
-  }
-
-  void register() {
     // todo: connect to Firebase & implement this function
   }
 
@@ -94,7 +91,7 @@ class LoginPage extends StatelessWidget {
                       ),
                     ),
                     GestureDetector(
-                      onTap: register,
+                      onTap: onTap,
                       child: Text(
                         'Register Here',
                         style: TextStyle(
