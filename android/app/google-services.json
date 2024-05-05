@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "1053132952673",
+    "project_id": "flutter-minimal-social-app",
+    "storage_bucket": "flutter-minimal-social-app.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:1053132952673:android:923a5f9779df8a1d694620",
+        "android_client_info": {
+          "package_name": "com.example.minimal_social_app"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyB5LwgXdzmHMwpsov-leW5JkllMZaimqxA"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
