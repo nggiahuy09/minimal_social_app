@@ -23,7 +23,7 @@ class MyApp extends StatelessWidget {
       debugShowCheckedModeBanner: false,
       theme: lightMode,
       darkTheme: darkMode,
-      home: const AuthPage(),
+      home: const LoginOrRegisterPage(),
     );
   }
 }
