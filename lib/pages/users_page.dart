@@ -60,7 +60,12 @@ class UsersPage extends StatelessWidget {
                     ),
                   ),
                   title: Text(user['username']),
-                  subtitle: Text(user['email']),
+                  subtitle: Text(
+                    user['email'],
+                    style: TextStyle(
+                      color: Theme.of(context).colorScheme.inversePrimary,
+                    ),
+                  ),
                 );
               },
             ),
