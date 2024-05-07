@@ -8,9 +8,10 @@ class HomePage extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Text('Home'),
-        backgroundColor: Theme.of(context).colorScheme.inversePrimary,
-        foregroundColor: Theme.of(context).colorScheme.onPrimary,
+        title: const Text('WALL'),
+        centerTitle: true,
+        backgroundColor: Colors.transparent,
+        foregroundColor: Theme.of(context).colorScheme.onBackground,
         elevation: 0,
       ),
       drawer: const MyDrawer(),

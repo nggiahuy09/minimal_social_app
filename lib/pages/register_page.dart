@@ -1,9 +1,13 @@
+// ignore_for_file: use_build_context_synchronously
+
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:minimal_social_app/widgets/my_button.dart';
 import 'package:minimal_social_app/widgets/my_textfield.dart';
-
 import '../helper/helper_functions.dart';
+
+final firestore = FirebaseFirestore.instance;
 
 class RegisterPage extends StatefulWidget {
   const RegisterPage({super.key, required this.onTap});
@@ -19,6 +23,17 @@ class _RegisterPageState extends State<RegisterPage> {
   final _emailController = TextEditingController();
   final _passwordController = TextEditingController();
   final _confirmPwController = TextEditingController();
+
+  void createUserDocument(UserCredential? userCredential) async {
+    if (userCredential != null && userCredential.user != null) {
+      await firestore.collection('Users').doc(userCredential.user!.uid).set({
+        'email': userCredential.user!.email,
+        'username': _usernameController.text.trim(),
+      });
+
+      Navigator.pop(context);
+    }
+  }
 
   void _registerUser() async {
     final enteredPassword = _passwordController.text.trim();
@@ -37,12 +52,17 @@ class _RegisterPageState extends State<RegisterPage> {
 
     // creating new user
     try {
-      await FirebaseAuth.instance.createUserWithEmailAndPassword(
+      UserCredential userCredential =
+          await FirebaseAuth.instance.createUserWithEmailAndPassword(
         email: _emailController.text.trim(),
         password: _passwordController.text.trim(),
       );
+
+      // create a user document and add to firestore
+      createUserDocument(userCredential);
+
       Navigator.pop(context);
-      displayMessengerToUser('Register Successfully', context);
+      // displayMessengerToUser('Register Successfully', context);
     } on FirebaseAuthException catch (err) {
       Navigator.pop(context);
       displayMessengerToUser(err.code, context);
